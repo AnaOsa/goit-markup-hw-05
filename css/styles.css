@@ -1,17 +1,19 @@
 :root {
     --text-color: #757575;
-    --backround-color: #ffffff;
+    --background-color: #ffffff;
     --accent-color: #2196f3;
     --title-color: #212121;
     --white-text-color: #ffffff;
     --btn-portfolio: #f5f4fa;
     --works-gap: 30px;
     --icon-color: #afb1b8;
+    --animation-duration: 250ms;
+    --animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 body {
     font-family: 'Roboto', sans-serif;
     color: var(--text-color);
-    background-color: var(--backround-color);
+    background-color: var(--background-color);
 }
 ul,
 h1,
@@ -68,6 +70,10 @@ img {
     line-height: calc(16 / 14);
     letter-spacing: 0.02em;
     color: var(--title-color);
+
+    transition-property: color;
+    transition-duration: var(--animation-duration);
+    transition-timing-function: var(--animation-timing-function);
 }
 .link:hover,
 .link:focus,
@@ -127,6 +133,7 @@ img {
     background: var(--accent-color);
     border-radius: 2px;
 }
+
 .section {
     padding-top: 94px;
     padding-bottom: 94px;
@@ -175,6 +182,10 @@ img {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
     border-radius: 4px;
     cursor: pointer;
+
+    transition-property: background-color;
+    transition-duration: var(--animation-duration);
+    transition-timing-function: var(--animation-timing-function);
 }
 .btn:hover,
 .btn:focus {
@@ -185,25 +196,29 @@ img {
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 1;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.2);
+    transition: opacity var(--animation-duration) var(--animation-timing-function),
+        transform var(--animation-duration) var(--animation-timing-function);
 }
 .backdrop.is-hidden {
+    transform: scale(2);
     visibility: hidden;
     opacity: 0;
     pointer-events: none;
 }
 .modal {
+    transform: scale(1);
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
     min-width: 528px;
     min-height: 581px;
 
-    background-color: var(--backround-color);
+    background-color: var(--background-color);
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
         0px 2px 1px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
@@ -215,9 +230,10 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: transparent;
     width: 30px;
     height: 30px;
+    fill: #000000;
+    background-color: transparent;
     border-radius: 50%;
     border: 1px solid rgba(0, 0, 0, 0.1);
 }
@@ -315,7 +331,7 @@ img {
     display: flex;
 }
 .team-item {
-    background-color: var(--backround-color);
+    background-color: var(--background-color);
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
         0px 2px 1px rgba(0, 0, 0, 0.2);
     border-radius: 0px 0px 4px 4px;
@@ -351,6 +367,7 @@ img {
     width: 44px;
     height: 44px;
 }
+
 .team-icon-link {
     display: flex;
     align-items: center;
@@ -358,11 +375,17 @@ img {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    fill: var(--icon-color);
+
+    color: var(--icon-color);
+    fill: currentColor;
+
+    transition: color var(--animation-duration) var(--animation-timing-function),
+        background-color var(--animation-duration) var(--animation-timing-function);
 }
+
 .team-icon-link:hover,
 .team-icon-link:focus {
-    fill: var(--white-text-color);
+    color: var(--white-text-color);
     background-color: var(--accent-color);
 }
 .team-icon-item:not(:last-child) {
@@ -389,13 +412,17 @@ img {
     border: 1px solid var(--icon-color);
     box-sizing: border-box;
     border-radius: 4px;
+
+    transition: border-color var(--animation-duration) var(--animation-timing-function);
 }
 .company-icon {
-    fill: var(--icon-color);
+    color: var(--icon-color);
+    fill: currentColor;
+    transition: color var(--animation-duration) var(--animation-timing-function);
 }
 .company-link:hover .company-icon,
 .company-link:focus .company-icon {
-    fill: var(--accent-color);
+    color: var(--accent-color);
 }
 .company-link:focus,
 .company-link:hover {
@@ -452,6 +479,10 @@ img {
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
     fill: var(--white-text-color);
+
+    transition-property: background-color;
+    transition-duration: var(--animation-duration);
+    transition-timing-function: var(--animation-timing-function);
 }
 .footer-icons-link:hover,
 .footer-icons-link:focus {
@@ -492,6 +523,10 @@ img {
     cursor: pointer;
     border: transparent;
     border-radius: 4px;
+
+    transition: color var(--animation-duration) var(--animation-timing-function),
+        background-color var(--animation-duration) var(--animation-timing-function),
+        box-shadow var(--animation-duration) var(--animation-timing-function);
 }
 .btn-filter:hover,
 .btn-filter:focus {
@@ -515,10 +550,44 @@ img {
 .works-link {
     display: block;
 }
+.works-link {
+    transition-property: box-shadow;
+    transition-duration: var(--animation-duration);
+    transition-timing-function: var(--animation-timing-function);
+}
 .works-link:hover,
 .works-link:focus {
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
         1px 4px 6px rgba(0, 0, 0, 0.16);
+}
+.works-link:hover .works-overlay {
+    transform: translateY(0);
+}
+
+.works-thumb {
+    position: relative;
+    overflow: hidden;
+}
+.works-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(33, 150, 243, 0.9);
+
+    transform: translateY(100%);
+    transition: transform var(--animation-duration) var(--animation-timing-function),
+        box-shadow var(--animation-duration) var(--animation-timing-function);
+}
+.overlay-text {
+    padding: 63px 24px;
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.56;
+    letter-spacing: 0.03em;
+    color: var(--white-text-color);
 }
 .border {
     padding: 20px 24px;
